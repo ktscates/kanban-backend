@@ -7,12 +7,14 @@ import cors from "cors";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "http://localhost:4200",
-  })
-);
+// CORS configuration
+const corsOptions = {
+  origin: "*", // Allow all origins for testing
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type,Authorization",
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
@@ -27,6 +29,12 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({ message: "Internal server error" });
 });
 
-app.listen(3000, () => {
+app.get("/test", (req, res) => {
+  res.json({ message: "API is working" });
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
   console.log("Server is running on port 3000");
 });
