@@ -2,17 +2,17 @@ import express from "express";
 import {
   getBoards,
   getBoard,
-  addBoard,
+  createBoard,
   updateBoard,
   deleteBoard,
 } from "../controllers/boardController";
 
 const router = express.Router();
 
-router.get("/", getBoards);
-router.get("/:boardId", getBoard);
-router.post("/", addBoard);
-router.put("/:boardId", updateBoard);
-router.delete("/:boardId", deleteBoard);
+router.get("/boards", getBoards);
+router.post("/boards", createBoard);
+router.get("/boards/:boardName", getBoard);
+router.put("/boards/:boardName", updateBoard);
+router.delete("/boards/:boardName", deleteBoard);
 
 export default router;

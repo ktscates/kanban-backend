@@ -1,5 +1,7 @@
 import express from "express";
 import {
+  getColumns,
+  getColumn,
   addColumn,
   updateColumn,
   deleteColumn,
@@ -7,8 +9,10 @@ import {
 
 const router = express.Router();
 
-router.post("/:boardId/columns", addColumn);
-router.put("/:boardId/columns/:columnId", updateColumn);
-router.delete("/:boardId/columns/:columnId", deleteColumn);
+router.get("/boards/:boardName/columns", getColumns);
+router.post("/boards/:boardName/columns", addColumn);
+router.get("/boards/:boardName/columns/:columnName", getColumn);
+router.put("/boards/:boardName/columns/:columnName", updateColumn);
+router.delete("/boards/:boardName/columns/:columnName", deleteColumn);
 
 export default router;

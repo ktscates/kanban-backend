@@ -18,10 +18,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
-app.use("/boards", boardRoutes);
-app.use("/boards", columnRoutes);
-app.use("/boards", taskRoutes);
-app.use("/boards", subtaskRoutes);
+app.use("/api", boardRoutes);
+app.use("/api", columnRoutes);
+app.use("/api", taskRoutes);
+app.use("/api", subtaskRoutes);
 
 // Error handling middleware
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {

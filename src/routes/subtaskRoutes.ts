@@ -3,17 +3,30 @@ import {
   addSubtask,
   updateSubtask,
   deleteSubtask,
+  getSubtasks,
+  getSubtask,
 } from "../controllers/subtaskController";
 
 const router = express.Router();
 
-router.post("/:boardId/columns/:columnId/tasks/:taskId/subtasks", addSubtask);
+router.get(
+  "/boards/:boardName/columns/:columnName/tasks/:taskName/subtasks",
+  getSubtasks
+);
+router.post(
+  "/boards/:boardName/columns/:columnName/tasks/:taskName/subtasks",
+  addSubtask
+);
+router.get(
+  "/boards/:boardName/columns/:columnName/tasks/:taskName/subtasks/:subtaskName",
+  getSubtask
+);
 router.put(
-  "/:boardId/columns/:columnId/tasks/:taskId/subtasks/:subtaskId",
+  "/boards/:boardName/columns/:columnName/tasks/:taskName/subtasks/:subtaskName",
   updateSubtask
 );
 router.delete(
-  "/:boardId/columns/:columnId/tasks/:taskId/subtasks/:subtaskId",
+  "/boards/:boardName/columns/:columnName/tasks/:taskName/subtasks/:subtaskName",
   deleteSubtask
 );
 
